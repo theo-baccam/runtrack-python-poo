@@ -3,7 +3,7 @@ class Produit:
     def __init__(self, input_name, input_price,  input_TVA):
         self.nom = input_name
         self.prixHT = input_price
-        self.TVA = input_TVA
+        self.TVA = self.prixHT * (input_TVA / 100)
 
     # Méthode pour calculer le TTC
     def CalculerPrixTTC(self):
@@ -14,7 +14,7 @@ class Produit:
     def afficher(self):
         info_string = (
             f"Nom: {self.nom}\n"
-            f"Prix hors-tarif: {self.prixHT}\n"
+            f"Prix hors-taxe: {self.prixHT}\n"
             f"TVA: {self.TVA}\n"
             f"TTC = {self.CalculerPrixTTC()}\n"
         )

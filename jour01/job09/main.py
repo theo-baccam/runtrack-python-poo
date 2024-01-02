@@ -1,8 +1,8 @@
 from produit import Produit
 
 # On instancie deux objets
-chips = Produit("Lays", 1.35, 0.50)
-drink = Produit("Coca-Cola", 1.10, 0.40)
+chips = Produit("Lays", 1.35, 20)
+drink = Produit("Coca-Cola", 1.10, 20)
 
 # On affiche les infos
 chips_info = chips.afficher()
