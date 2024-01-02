@@ -5,6 +5,13 @@ class Cercle:
     # init ne contient que le rayon, on calcule le reste des attributs du cercle à partir du rayon
     def __init__(self, initial_rayon):
         self.rayon = initial_rayon
+        
+        # Si le rayon n'est pas un integer ou un float, erreur
+        if (
+            not isinstance(self.rayon, int) or
+            not isinstance(self.rayon, float) or
+            ):
+            raise ValueError("Rayon doit être un integer ou un float")
     
     # Méthode pour changer le rayon
     def changerRayon(self, input_integer):
