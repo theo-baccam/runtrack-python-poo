@@ -1,13 +1,16 @@
 class Produit:
+    # init contient le nom, le prix hors tarif et le TVA
     def __init__(self, input_name, input_price,  input_TVA):
         self.nom = input_name
         self.prixHT = input_price
         self.TVA = input_TVA
 
+    # Méthode pour calculer le TTC
     def CalculerPrixTTC(self):
         TTC = self.prixHT + self.TVA
         return TTC
 
+    # Méthode qui return les infos sur le produit
     def afficher(self):
         info_string = (
             f"Nom: {self.nom}\n"
@@ -17,6 +20,7 @@ class Produit:
         )
         return info_string
 
+    # Méthodes pour changer les attributs
     def changer_nom(self, new_name):
         self.nom = new_name
 
