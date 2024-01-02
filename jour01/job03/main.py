@@ -1,6 +1,7 @@
-import operation
+from operation import Operation
 
-op = operation.Operation()
+op = Operation()
 
+# Cette fois on imprime le resultat de la méthode addition()
 resultat = op.addition()
 print(resultat)
