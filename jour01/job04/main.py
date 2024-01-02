@@ -1,8 +1,10 @@
-import personne
+from personne import Personne
 
-torvalds_linus = personne.Personne("Torvalds", "Linus")
-stallman_richard = personne.Personne("Stallman", "Richard")
+# On créer deux instances, et on leur donne les attributs nécessaires
+torvalds_linus = Personne("Torvalds", "Linus")
+stallman_richard = Personne("Stallman", "Richard")
 
+# On imprime l'output des méthodes
 presentation_linus = torvalds_linus.SePresenter()
 presentation_richard = stallman_richard.SePresenter()
 
