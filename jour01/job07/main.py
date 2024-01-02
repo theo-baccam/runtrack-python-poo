@@ -1,10 +1,13 @@
-import personnage
+from personnage import Personnage
 
-john_doe = personnage.Personnage(0, 0)
+# On instancie un nouveau personnage avec des coordonnées
+john_doe = Personnage(0, 0)
 
+# On affiche la position
 position = john_doe.position()
 print(position)
 
+# Puis on la change, et on affiche la position modifié
 john_doe.gauche()
 position = john_doe.position()
 print(position)
