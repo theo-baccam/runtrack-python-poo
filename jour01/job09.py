@@ -1,6 +1,6 @@
 class Produit:
-    # init contient le nom, le prix hors tarif et le TVA
-    def __init__(self, input_name, input_price,  input_TVA):
+    # init contient le nom, le prix hors tarif et le TVA
+    def __init__(self, input_name, input_price, input_TVA):
         self.nom = input_name
         self.prixHT = input_price
         self.TVA = self.prixHT * (input_TVA / 100)
@@ -20,12 +20,13 @@ class Produit:
         )
         return info_string
 
-    # Méthodes pour changer les attributs
+    # Méthodes pour changer les attributs
     def changer_nom(self, new_name):
         self.nom = new_name
 
     def changer_prix(self, new_price):
         self.prixHT = new_price
+
 
 # On instancie deux objets
 chips = Produit("Lays", 1.35, 20)
