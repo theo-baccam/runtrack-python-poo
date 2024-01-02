@@ -4,6 +4,15 @@ class Point:
         self.x = x_input
         self.y = y_input
 
+        # Erreur si les attributs ne sont pas des nombres
+        if (
+            not isinstance(self.x, int) and
+            not isinstance(self.x, float) or
+            not isinstance(self.y, int) and
+            not isinstance(self.y, float)
+        ):
+            raise ValueError("Positions doit être integer ou float")
+
     # Méthode pour qui return la position sous forme de tuple
     def afficherLesPoints(self):
         coordinate = (self.x, self.y)
@@ -17,8 +26,21 @@ class Point:
         return self.y
 
     # Méthodes qui permettent de changer x et y
+    # Erreur si increment n'est pas nombre
     def changerX(self, increment):
+        if (
+            not isinstance(increment, int) and
+            not isinstance(increment, float)
+        ):
+            raise ValueError("Incrément doit être integer ou float")
+
         self.x += increment
 
     def changerY(self, increment):
+        if (
+            not isinstance(increment, int) and
+            not isinstance(increment, float)
+        ):
+            raise ValueError("Incréments doit être integer ou float")
+
         self.y += increment
