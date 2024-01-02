@@ -10,4 +10,7 @@ class Animal:
     
     # Méthode pour nommer l'animal
     def nommer(self, prenom):
+        # Erreur si le prénom n'est pas un string
+        if not isinstance(prenom, string):
+            raise ValueError("Le prénom doit être un string")
         self.prenom = prenom
