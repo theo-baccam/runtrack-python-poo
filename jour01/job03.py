@@ -8,3 +8,9 @@ class Operation:
         somme = self.nombre1 + self.nombre2
         return somme
 
+
+op = Operation()
+
+# Cette fois on imprime le resultat de la méthode addition()
+resultat = op.addition()
+print(resultat)

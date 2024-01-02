@@ -8,9 +8,9 @@ class Cercle:
         
         # Si le rayon n'est pas un integer ou un float, erreur
         if (
-            not isinstance(self.rayon, int) or
-            not isinstance(self.rayon, float) or
-            ):
+            not isinstance(self.rayon, int) and
+            not isinstance(self.rayon, float)
+        ):
             raise ValueError("Rayon doit être un integer ou un float")
     
     # Méthode pour changer le rayon
@@ -39,3 +39,11 @@ class Cercle:
             f"Aire = {self.aire()}\n"
         )
         print(info_string)
+
+# On instancie un nouveau cercle
+cercle_1 = Cercle(4)
+cercle_2 = Cercle(7)
+
+# On affiche les informations sur ce cercle
+cercle_1.afficherInfos()
+cercle_2.afficherInfos()

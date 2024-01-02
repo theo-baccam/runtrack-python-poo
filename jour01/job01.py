@@ -3,3 +3,9 @@ class Operation:
     def __init__(self):
         self.nombre1 = 83
         self.nombre2 = 21
+
+# On créer une instance
+op = Operation()
+
+# Puis on l'affiche  sur la console
+print(op)
