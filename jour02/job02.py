@@ -11,7 +11,7 @@ class Livre:
         self.__author = author
         self.__pages = pages
 
-    # Des méthodes getters et setters
+    # Des méthodes getters et setters
     def get_title(self):
         return self.__title
 
@@ -21,7 +21,7 @@ class Livre:
     def get_pages(self):
         return self.__pages
 
-    # Nous vérifions que les valeurs utilisé pour les setters sont correct
+    # Nous vérifions que les valeurs utilisé pour les setters sont correct
     def set_title(self, string):
         if not isinstance(string, str):
             raise ValueError("Titre doit être un string")
@@ -37,24 +37,22 @@ class Livre:
             raise ValueError("Pages doit être un integer positif")
         self.__pages = integer
 
+
 def main():
+    # Nous créeos un object book
     book = Livre("Dune", "Frank Herbert", 612)
 
-    print(
-        f"{book.get_title()}\n"
-        f"{book.get_author()}\n"
-        f"{book.get_pages()}\n"
-    )
+    # On affiche les attributs de book
+    print(f"{book.get_title()}\n" f"{book.get_author()}\n" f"{book.get_pages()}\n")
 
+    # On modifie les attributs
     book.set_title("Kairo")
     book.set_author("Kiyoshi Kurosawa")
     book.set_pages(404)
 
-    print(
-        f"{book.get_title()}\n"
-        f"{book.get_author()}\n"
-        f"{book.get_pages()}\n"
-    )
+    # On les affiche à nouveau
+    print(f"{book.get_title()}\n" f"{book.get_author()}\n" f"{book.get_pages()}\n")
+
 
 if __name__ == "__main__":
     main()
