@@ -1,34 +1,26 @@
+# Nous importons la classe Livre dans le fichier job02.py.
+# Si nous n'avions pas mis la condition `if __name__ == "__main__"`,
+# ça aurait exécuté le code qui est en dehors de la classe
 from job02 import Livre
 
+
+# Cette classe est l'enfant de la classe Livre
 class LivreBibliotheque(Livre):
     def __init__(self, title, author, pages):
+        # Cette classe hérite des attributs de son parent
         super().__init__(title, author, pages)
+        # Un nouveau attribut pour la disponibilité
         self.__disponible = True
 
-    def get_title(self):
-        title = super().get_title()
-        return title
+    # Cette class hérite aussi des méthodes de son parent,
+    # donc pas besoin de les re-écrire.
 
-    def get_author(self):
-        author = super().get_author()
-        return author
-
-    def get_pages(self):
-        pages = super().get_pages()
-        return pages
-
-    def set_title(self, string):
-        super().set_title(string)
-
-    def set_author(self, string):
-        super().set_author(string)
-
-    def set_pages(self, integer):
-        super().set_pages(integer)
-
+    # verification est un getter qui retourne l'attribut disponible
     def verification(self):
         return self.__disponible
 
+    # emprunter et rendre sont des setters qui modifie l'attribut disponible
+    # on peut qu'emprunter si le livre a été rendu et vice-versa pour l'autre méthode
     def emprunter(self):
         if self.verification():
             self.__disponible = False
@@ -36,6 +28,7 @@ class LivreBibliotheque(Livre):
     def rendre(self):
         if not self.verification():
             self.__disponible = True
+
 
 def main():
     book = LivreBibliotheque("Annihilation", "Jeff Vandermeer", 182)
@@ -70,6 +63,7 @@ def main():
         f"{book.get_pages()} pages\n"
         f"Disponible: {book.verification()}\n"
     )
+
 
 if __name__ == "__main__":
     main()
