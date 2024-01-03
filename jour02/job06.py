@@ -2,74 +2,75 @@ class Commande:
     def __init__(self, order_number, order_list):
         self.__order_number = order_number
         self.__order_list = order_list
-        self.__order_status = "Ongoing"
-        self.__total = self.__calculate_total()
-        self.__TVA = 20 / 100
-        self.__ttc = self.__calculate_ttc()
+        self.__order_status = "En cours"
+        self.__prix_ht = self.__calculate_prix_ht()
+        self.__TAUX_TVA = 20 / 100
+        self.__tva = self.__calculate_tva()
 
+    def __calculate_tva(self):
+        tva = self.__prix_ht * self.__TAUX_TVA
+        return tva
 
-    def get_order_number(self):
-        return self.__order_number
-
-    def get_order_list(self):
-        return self.__order_list
-
-    def get_order_status(self):
-        return self.__order_status
-
-    def get_total(self):
-        return self.__total
-
-    def get_ttc(self):
-        return self.__ttc
-
-    def __calculate_ttc(self):
-        tva = self.__total * self.__TVA
-        ttc = self.__total + tva
-        return ttc
-
-    def __calculate_total(self):
-        total = 0
+    def __calculate_prix_ht(self):
+        prix_ht = 0
         for value in self.__order_list.values():
-            total += value
-        return total
+            prix_ht += value
+        return prix_ht
 
     def add_to_order(self, item, price):
         self.__order_list[item] = price
-        self.__total = self.__calculate_total()
-        self.__ttc = self.__calculate_ttc()
+        self.__prix_ht = self.__calculate_prix_ht()
+        self.__tva = self.__calculate_tva()
 
     def finish_order(self):
-        self.__order_status = "Finished"
+        self.__order_status = "Terminée"
 
     def cancel_order(self):
-        self.__order_status = "Cancelled"
+        self.__order_status = "Annulé"
+
+    def order_info(self):
+        order_info = (
+            f"Numéro: {self.__order_number}\n"
+            f"Status: {self.__order_status}\n"
+            f"----------------\n"
+        )
+        for item, price in self.__order_list.items():
+            order_info += f"- {item}: {price}€\n"
+        order_info += (
+            f"----------------\n"
+            f"Prix hors-taxe: {self.__prix_ht}€\n"
+            f"TVA: {self.__tva}€\n"
+            f"Total: {self.__prix_ht + self.__tva}€\n"
+        )
+        return order_info
+
+
 
 def main():
-    order_list = {
+    first_order = {
         "Large Peperonni Pizza": 9.20,
-        "Medium Pineapple Pizza": 8.50,
-        "3L Coke Bottle": 4.30,
     }
-    order = Commande(492, order_list)
-    print(
-        f"Numéro: {order.get_order_number()}\n"
-        f"Commandes: {order.get_order_list()}\n"
-        f"Prix Hors-Taxe: {order.get_total()}\n"
-        f"Prix TTC: {order.get_ttc()}\n"
-        f"Status: {order.get_order_status()}\n"
-    )
+    first =  Commande(1, first_order)
+    print(first.order_info())
 
-    order.add_to_order("Canette de Sprite", 1.40)
-    print(
-        f"Numéro: {order.get_order_number()}\n"
-        f"Commandes: {order.get_order_list()}\n"
-        f"Prix Hors-Taxe: {order.get_total()}\n"
-        f"Prix TTC: {order.get_ttc()}\n"
-        f"Status: {order.get_order_status()}\n"
-    )
+    first.add_to_order("3L Coke Bottle", 4.30)
+    print(first.order_info())
+
+    first.cancel_order()
+    print(first.order_info())
+
+    second_order = {
+        "Medium Pineapple Pizza": 8.50,
+    }
+    second = Commande(2, second_order)
+    print(second.order_info())
+
+    second.add_to_order("Canette de Sprite", 1.40)
+    print(second.order_info())
+
+    second.finish_order()
+    print(second.order_info())
 
 
 if __name__ == "__main__":
-        main()
-
+    main()
