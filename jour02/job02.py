@@ -1,5 +1,11 @@
 class Livre:
     def __init__(self, title, author, pages):
+        if not isinstance(title, str):
+            raise ValueError("Titre doit être un string")
+        if not isinstance(author, str):
+            raise ValueError("Auteur doit être un string")
+        if not isinstance(pages, int) or pages < 0:
+            raise ValueError("Pages doit être un integer positif")
         self.__title = title
         self.__author = author
         self.__pages = pages
