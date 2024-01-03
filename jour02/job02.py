@@ -28,20 +28,24 @@ class Livre:
     def set_pages(self, integer):
         self.__pages = integer
 
-book = Livre("Dune", "Frank Herbert", 612)
+def main():
+    book = Livre("Dune", "Frank Herbert", 612)
 
-print(
-    f"{book.get_title()}\n"
-    f"{book.get_author()}\n"
-    f"{book.get_pages()}\n"
-)
+    print(
+        f"{book.get_title()}\n"
+        f"{book.get_author()}\n"
+        f"{book.get_pages()}\n"
+    )
 
-book.set_title("Kairo")
-book.set_author("Kiyoshi Kurosawa")
-book.set_pages(404)
+    book.set_title("Kairo")
+    book.set_author("Kiyoshi Kurosawa")
+    book.set_pages(404)
 
-print(
-    f"{book.get_title()}\n"
-    f"{book.get_author()}\n"
-    f"{book.get_pages()}\n"
-)
+    print(
+        f"{book.get_title()}\n"
+        f"{book.get_author()}\n"
+        f"{book.get_pages()}\n"
+    )
+
+if __name__ == "__main__":
+    main()
