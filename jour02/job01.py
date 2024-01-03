@@ -18,17 +18,24 @@ class Rectangle:
         self.__largeur = valeur
 
 
-# On crée un rectangle 10x5
-rectangle = Rectangle(10, 5)
+def main():
+    # On crée un rectangle 10x5
+    rectangle = Rectangle(10, 5)
 
-# On vérifie ses dimensions
-print(rectangle.get_longueur())
-print(rectangle.get_largeur())
+    # On vérifie ses dimensions
+    print(rectangle.get_longueur())
+    print(rectangle.get_largeur())
 
-# On modifie ses dimensions
-rectangle.set_longueur(7)
-rectangle.set_largeur(19)
+    # On modifie ses dimensions
+    rectangle.set_longueur(7)
+    rectangle.set_largeur(19)
 
-# On re-vérifie ses dimensions
-print(rectangle.get_longueur())
-print(rectangle.get_largeur())
+    # On re-vérifie ses dimensions
+    print(rectangle.get_longueur())
+    print(rectangle.get_largeur())
+
+
+# On appel la fonction main que si on exécute directement le fichier
+# Au cas où on souhaite exporter la classe.
+if __name__ == "__main__":
+    main()

@@ -1,4 +1,5 @@
 class Livre:
+    # Nous initialisons plusieurs attributs dans le constructeur et nous vérifions si ils corrects
     def __init__(self, title, author, pages):
         if not isinstance(title, str):
             raise ValueError("Titre doit être un string")
@@ -10,6 +11,7 @@ class Livre:
         self.__author = author
         self.__pages = pages
 
+    # Des méthodes getters et setters
     def get_title(self):
         return self.__title
 
@@ -19,13 +21,20 @@ class Livre:
     def get_pages(self):
         return self.__pages
 
+    # Nous vérifions que les valeurs utilisé pour les setters sont correct
     def set_title(self, string):
+        if not isinstance(string, str):
+            raise ValueError("Titre doit être un string")
         self.__title = string
 
     def set_author(self, string):
+        if not isinstance(string, str):
+            raise ValueError("Auteur doit être un string")
         self.__author = string
 
     def set_pages(self, integer):
+        if not isinstance(integer, int) or integer < 0:
+            raise ValueError("Pages doit être un integer positif")
         self.__pages = integer
 
 def main():
