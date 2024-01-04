@@ -1,5 +1,7 @@
 class Joueur:
-    def __init__(self, name, number, position, scored_goals, assists, yellow_cards, red_cards):
+    def __init__(
+        self, name, number, position, scored_goals, assists, yellow_cards, red_cards
+    ):
         self.__name = name
         self.__number = number
         self.__position = position
@@ -8,7 +10,7 @@ class Joueur:
         self.__yellow_cards = yellow_cards
         self.__red_cards = red_cards
 
-    # Setters variés
+    # Setters variés
     def marquerUnBut(self):
         self.__scored_goals += 1
 
@@ -21,7 +23,7 @@ class Joueur:
     def recevoirUnCartonRouge(self):
         self.__red_cards += 1
 
-    # Ca permet d'obtenir les stats d'un joueur de façon structuré
+    # Ca permet d'obtenir les stats d'un joueur de façon structuré
     def afficherStatistiques(self):
         formatted_statistics = (
             f"Nom: {self.__name}\n"
@@ -39,10 +41,10 @@ class Joueur:
 class Equipe:
     def __init__(self, name):
         self.__name = name
-        self.__player_list  = []
+        self.__player_list = []
 
-    # On peut ajouter des joueurs dans une tuple pour éviter de rêpéter
-    # la methode
+    # On peut ajouter des joueurs dans une tuple pour éviter de rêpéter
+    # la methode
     def ajouterJoueur(self, player):
         if isinstance(player, tuple):
             for individual in player:
@@ -50,15 +52,15 @@ class Equipe:
             return
         self.__player_list.append(player)
 
-    # Un string qui commence avec le nom de l'équipe, puis les stats des joueurs
+    # Un string qui commence avec le nom de l'équipe, puis les stats des joueurs
     def AfficherStatistiquesJoueurs(self):
-        team_statistics = f"--- {self.__name} ---\n" 
+        team_statistics = f"--- {self.__name} ---\n"
         for player in self.__player_list:
             team_statistics += player.afficherStatistiques()
         return team_statistics
 
-    # A part que ça aide à ne pas se tromper sur qui appartient à quelle équipe.
-    # Cette méthode me paraît un peu redondante.
+    # A part que ça aide à ne pas se tromper sur qui appartient à quelle équipe.
+    # Cette méthode me paraît un peu redondante.
     def mettreAJourStatistiquesJoueur(self, player, method):
         if not player in self.__player_list:
             return
@@ -66,8 +68,8 @@ class Equipe:
 
 
 red = Equipe("RED")
-# De ce que je comprends les nombres sont supposés être liés à la position
-# Pas mon problème ¯\_(ツ)_/¯
+# De ce que je comprends les nombres sont supposés être liés à la position
+# Pas mon problème ¯\_(ツ)_/¯
 demoman = Joueur("Tavish", 1, "Defense", 1, 4, 7, 3)
 engineer = Joueur("Dell", 3, "Midfield", 9, 15, 3, 1)
 soldier = Joueur("Jane", 4, "Forwards", 19, 12, 9, 27)
