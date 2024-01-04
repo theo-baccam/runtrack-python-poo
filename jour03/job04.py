@@ -77,7 +77,7 @@ red.ajouterJoueur((demoman, engineer, soldier))
 
 blu = Equipe("BLU")
 heavy = Joueur("Misha", 7, "Defense", 3, 9, 3, 2)
-pyro = Joueur("????", 8, "Midfield", 8, 14, 8, 17)
+pyro = Joueur("Mmmh Mmh-mhh!", 8, "Midfield", 8, 14, 8, 17)
 scout = Joueur("Jeremy", 2, "Forwards", 17, 5, 6, 5)
 blu.ajouterJoueur((heavy, pyro, scout))
 
