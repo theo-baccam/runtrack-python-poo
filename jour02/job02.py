@@ -39,7 +39,7 @@ class Livre:
 
 
 def main():
-    # Nous créeos un object book
+    # Nous créeons un object book
     book = Livre("Dune", "Frank Herbert", 612)
 
     # On affiche les attributs de book
