@@ -36,17 +36,26 @@ class Personne:
         self.__city.ajouterPopulation()
 
 
-# On créer des instances de Ville
-paris = Ville("Paris", 1000000)
-print(f"{paris.get_name()}: {paris.get_population()}\n")
+def main():
+    # On créer des instances de Ville
+    paris = Ville("Paris", 1000000)
+    marseille = Ville("Marseille", 861635)
+    print(
+        f"Population initiale:\n"
+        f"{paris.get_name()}: {paris.get_population()}\n"
+        f"{marseille.get_name()}: {marseille.get_population()}\n"
+    )
 
-marseille = Ville("Marseille", 861635)
-print(f"{marseille.get_name()}: {marseille.get_population()}\n")
+    # On créer des instances de Personne, ce qui modifie la poulation de leur villes
+    john = Personne("John", 45, paris)
+    myrtille = Personne("Myrtille", 4, paris)
+    chloe = Personne("Chloé", 18, marseille)
+    print(
+        f"Mis à jour population:\n"
+        f"{paris.get_name()}: {paris.get_population()}\n"
+        f"{marseille.get_name()}: {marseille.get_population()}\n"
+    )
 
-# On créer des instances de Personne, ce qui modifie la poulation de leur villes
-john = Personne("John", 45, paris)
-myrtille = Personne("Myrtille", 4, paris)
-print(f"{paris.get_name()}: {paris.get_population()}\n")
 
-chloe = Personne("Chloé", 18, marseille)
-print(f"{marseille.get_name()}: {marseille.get_population()}\n")
+if __name__ == "__main__":
+    main()

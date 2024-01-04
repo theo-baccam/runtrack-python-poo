@@ -3,12 +3,12 @@ from random import choice
 
 class Personnage:
     def __init__(self, name, health_points):
-        # verification du type des attributs
+        # verification du type des attributs
         if not isinstance(name, str):
             raise ValueError("Le nom du personnage doit être un string.")
         if not isinstance(health_points, int):
             raise ValueError("La vie d'un personnage doit être un integer")
-        # Pour le moment, il n'y a que le strict minimum, mais je développerais tout ça plus tard.
+        # Pour le moment, il n'y a que le strict minimum, mais je développerais tout ça plus tard.
         self.__name = name
         self.__health_points = health_points
 
@@ -26,7 +26,7 @@ class Personnage:
 
 
 class Jeu:
-    # Toutes les méthodes s'initialise directement
+    # Toutes les méthodes s'initialise directement
     def __init__(self):
         self.__niveau = self.__choisirNiveau()
         self.__lancerJeu()
@@ -49,7 +49,7 @@ class Jeu:
             else:
                 print("Choix invalide.\n")
 
-    # Prompt pour le jeu lui même
+    # Prompt pour le jeu lui même
     def __lancerJeu(self):
         if self.__niveau == "Facile":
             player_hp = 12
@@ -60,17 +60,17 @@ class Jeu:
         elif self.__niveau == "Difficile":
             player_hp = 8
             enemy_hp = 10
-        # Initialisation personnages
+        # Initialisation personnages
         player = Personnage("Player", player_hp)
         enemy = Personnage("Enemy", enemy_hp)
         # Boucle du jeu
         while True:
-            # print stats
+            # print stats
             print(
                 f"{player.get_name()}: {player.get_health_points()}HP\n"
                 f"{enemy.get_name()}: {enemy.get_health_points()}HP"
             )
-            # Choix aléatoire dommage
+            # Choix aléatoire dommage
             player_choice = input()
             damage = choice(range(0, 3))
             player.attaquer(enemy, damage)
@@ -79,7 +79,7 @@ class Jeu:
             damage = choice(range(0, 3))
             enemy.attaquer(player, damage)
             print(f"{enemy.get_name()} a attaqué pour {damage}HP\n")
-            # Resultat de la partie
+            # Resultat de la partie
             if player.get_health_points() <= 0:
                 print("Le joueur est mort! L'ennemi gagne!")
                 break
