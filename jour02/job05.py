@@ -66,7 +66,7 @@ class Voiture:
 def print_info(car):
     print(
         f"Marque: {car.get_brand()}\n"
-        f"Modèle : {car.get_model()}\n"
+        f"Modèle: {car.get_model()}\n"
         f"Année: {car.get_year()}\n"
         f"Kilométrage: {car.get_distance()}\n"
         f"En marche? {car.get_en_marche()}\n"
