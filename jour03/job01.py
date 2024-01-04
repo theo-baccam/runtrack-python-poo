@@ -1,6 +1,6 @@
 class Ville:
     def __init__(self, name, population):
-        # On vérifie si les attributs sont du bon type
+        # On vérifie si les attributs sont du bon type
         if not isinstance(name, str):
             raise ValueError("Le nom de la ville doit être un string")
         if not isinstance(population, int):
@@ -8,21 +8,21 @@ class Ville:
         self.__name = name
         self.__population = population
 
-    # Getters pour les attributs
+    # Getters pour les attributs
     def get_name(self):
         return self.__name
 
     def get_population(self):
         return self.__population
 
-    # Méthode pour ajouter à la population, utilisé par une Personne
+    # Méthode pour ajouter à la population, utilisé par une Personne
     def ajouterPopulation(self):
         self.__population += 1
 
 
 class Personne:
     def __init__(self, name, age, city):
-        # Vérification type d'attribut
+        # Vérification type d'attribut
         if not isinstance(name, str):
             raise ValueError("Le prénom doit être un string")
         if not isinstance(age, int):
@@ -32,17 +32,18 @@ class Personne:
         self.__name = name
         self.__age = age
         self.__city = city
-        # On apelle la méthode ajouterPopulation de la Ville
+        # On apelle la méthode ajouterPopulation de la Ville
         self.__city.ajouterPopulation()
 
-# On créer des instances de Ville
+
+# On créer des instances de Ville
 paris = Ville("Paris", 1000000)
 print(f"{paris.get_name()}: {paris.get_population()}\n")
 
 marseille = Ville("Marseille", 861635)
 print(f"{marseille.get_name()}: {marseille.get_population()}\n")
 
-# On créer des instances de Personne, ce qui modifie la poulation de leur villes
+# On créer des instances de Personne, ce qui modifie la poulation de leur villes
 john = Personne("John", 45, paris)
 myrtille = Personne("Myrtille", 4, paris)
 print(f"{paris.get_name()}: {paris.get_population()}\n")
