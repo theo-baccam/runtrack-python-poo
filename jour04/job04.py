@@ -20,5 +20,10 @@ class Rectangle(Forme):
         return self.__longueur * self.__largeur
 
 
-rectangle = Rectangle(6, 8)
-print(rectangle.aire())
+def main():
+    rectangle = Rectangle(6, 8)
+    print(rectangle.aire())
+
+
+if __name__ == "__main__":
+    main()
