@@ -3,9 +3,9 @@ class Rectangle:
         # Vérification attributs valide
         if not (
             isinstance(longueur, (float, int))
-            or isinstance(largeur, (float, int))
-            or longueur >= 0
-            or largeur >= 0
+            and isinstance(largeur, (float, int))
+            and longueur > 0
+            and largeur > 0
         ):
             raise ValueError("Les dimensions doivent êtres des nombres positifs")
         self.__longueur = longueur
@@ -18,12 +18,12 @@ class Rectangle:
         return self.__largeur
 
     def set_longueur(self, number):
-        if not isinstance(number, (float, int)) or number < 0:
+        if not isinstance(number, (float, int)) or number <= 0:
             raise ValueError("Les dimensions doivent êtres des nombres positifs")
         self.__longuer = number
 
     def set_largeur(self, number):
-        if not isinstance(number, (float, int)) or number < 0:
+        if not isinstance(number, (float, int)) or number <= 0:
             raise ValueError("Les dimensions doivent êtres des nombres positifs")
         self.__longueur = number
 
@@ -41,7 +41,7 @@ class Rectangle:
 
 class Parallelepipede(Rectangle):
     def __init__(self, longueur, largeur, hauteur):
-        if not isinstance(hauteur, (float, int)) or hauteur < 0:
+        if not isinstance(hauteur, (float, int)) or hauteur <= 0:
             raise ValueError("Les dimensions doivent êtres des nombres positifs")
         super().__init__(longueur, largeur)
         self.__hauteur = hauteur
