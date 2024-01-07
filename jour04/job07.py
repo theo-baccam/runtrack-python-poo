@@ -117,7 +117,6 @@ class Jeu:
         self.check_dealer_out()
 
         while True:
-            print(self.dealer.assess_value(self.dealer.face_down_card[0].value))
             self.dealer.show_cards()
             self.player.look_at_hand()
 
@@ -126,11 +125,18 @@ class Jeu:
             self.check_player_bust()
             self.check_player_blackjack()
 
-            
             if not self.dealer.out:
                 self.dealer.draw_card(self.deck, self.dealer.face_up_cards)
-                print("Le croupier pioche une carte.")
-                sleep(0.25)
+                dealer_draw_message = "Le croupier a pioché "
+                card = self.dealer.face_up_cards[-1]
+                points = self.dealer.assess_value(card.value)
+                if points == 1:
+                    dealer_draw_message += f"As de {card.color} (1 ou 10)\n"
+                elif card.value in card.figures:
+                    dealer_draw_message += f"{card.figures[card.value]} de {card.color} ({points})\n"
+                else:
+                    dealer_draw_message += f"{card.value} de {card.color} ({points})\n"
+                print(dealer_draw_message)
 
             self.check_dealer_out()
 
@@ -139,26 +145,26 @@ class Jeu:
                     max(self.dealer.assess_total(self.dealer.face_up_cards)) + 
                     self.dealer.assess_value(self.dealer.face_down_card[0].value)
                 )
-                max_player_total = max(self.player.assess_total(self.player.hand))
+                player_total = min(self.player.assess_total(self.player.hand))
                 print(
                     f"Dealer: {max_dealer_total}\n"
-                    f"Player: {max_player_total}\n"
+                    f"Player: {player_total}\n"
                 )
-                if max_dealer_total == max_player_total:
+                if max_dealer_total == player_total:
                     print("Egalité")
-                elif max_dealer_total > 21 and max_player_total > 21:
+                elif max_dealer_total > 21 and player_total > 21:
                     print("Egalité")
                 elif max_dealer_total > 21:
                     print("Le croupier est au-dessus de 21, le joueur gagne.")
-                elif max_player_total > 21:
+                elif player_total > 21:
                     print("Le joueur est au-dessus de 21, le croupier gagne.")
                 elif max_dealer_total == 21:
                     print("Le croupier a Blackjack et gagne")
-                elif max_player_total == 21:
+                elif player_total == 21:
                     print("Le joueur a Blackjack et gagne")
-                elif max_dealer_total > max_player_total:
+                elif max_dealer_total > player_total:
                     print("Le croupier a plus que le joueur et gagne.")
-                elif max_player_total > max_dealer_total:
+                elif player_total > max_dealer_total:
                     print("Le joueur a plus que le croupier et gagne.")
                 break
 
@@ -175,17 +181,26 @@ class Jeu:
             choice = input("1) Prendre une carte\n2) Rester\n")
             if choice == "1":
                 self.dealer.draw_card(self.deck, self.player.hand)
-                print("Le joueur a pioché une carte")
+                player_draw_message = "Le jouer a pioché "
+                card = self.player.hand[-1]
+                points = self.player.assess_value(card.value)
+                if points == 1:
+                    player_draw_message += f"As de {card.color} (1 ou 10)\n"
+                elif card.value in card.figures:
+                    player_draw_message += f"{card.figures[card.value]} de {card.color} ({points})\n"
+                else:
+                    player_draw_message += f"{card.value} de {card.color} ({points})\n"
+                print(player_draw_message)
             elif choice == "2":
                 self.player.out = True
-                print("Le joueur reste")
+                print("Le joueur reste\n")
             else:
-                print("Choix invalide")
-            print("\n")
+                print("Choix invalide\n")
 
     def check_player_bust(self):
         if min(total > 21 for total in self.player.assess_total(self.player.hand)):
             self.player.out = True
+            self.dealer.out = True
 
     def check_player_blackjack(self):
         if any(total == 21 for total in self.player.assess_total(self.player.hand)):
