@@ -52,16 +52,7 @@ class Player:
                 total += 10
                 continue
             total += points
-        if ace_number == 0:
-            totals_list = [total]
-        elif ace_number == 1:
-            totals_list = [total+1, total+11]
-        elif ace_number == 2:
-            totals_list = [total+2, total+12, total+22]
-        elif ace_number == 3:
-            totals_list = [total+3, total+13, total+23, total+33]
-        elif ace_number == 4:
-            totals_list = [ total+4, total+14, total+24, total+34, total+44 ]
+        totals_list = [total+(ace_number+10*i) for i in range(0, ace_number+1)]
         return totals_list
 
             
