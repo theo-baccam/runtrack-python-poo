@@ -35,16 +35,39 @@ class Player:
         self.hand = []
 
     def assess_value(self, value):
-        if value == 1:
-            return 1, 10
-        elif value >= 10:
+        if value >= 10:
             return 10
-        else:
-            return value
+        return value
+
+    def assess_total(self):
+        totals_list = []
+        total = 0
+        ace_number = 0
+        for card in self.hand:
+            points = self.assess_value(card.value)
+            if points == 1:
+                ace_number += 1
+                continue
+            if points >= 10:
+                total += 10
+                continue
+            total += points
+        if ace_number == 0:
+            totals_list = [total]
+        elif ace_number == 1:
+            totals_list = [total+1, total+11]
+        elif ace_number == 2:
+            totals_list = [total+2, total+12, total+22]
+        elif ace_number == 3:
+            totals_list = [total+3, total+13, total+23, total+33]
+        elif ace_number == 4:
+            totals_list = [ total+4, total+14, total+24, total+34, total+44 ]
+        return totals_list
+
+            
 
     def look_at_hand(self):
         figures = {
-            1: "As",
             11: "Valet",
             12: "Reine",
             13: "Roi",
@@ -53,10 +76,14 @@ class Player:
         hand_status = "Vous avez:\n"
         for card in self.hand:
             points = self.assess_value(card.value)
+            if points == 1:
+                hand_status += f"- As de {card.color} (1 ou 10)\n"
+                continue
             if card.value in figures:
                 hand_status += f"- {figures[card.value]} de {card.color} ({points})\n"
                 continue
             hand_status += f"- {card.value} de {card.color} ({points})\n"
+        hand_status += f"En tout:{self.assess_total()}"
         print(hand_status)
 
 
@@ -80,5 +107,8 @@ class Jeu:
                 deck.append(carte)
         return deck
 
+def main():
+    blackjack = Jeu()
 
-blackjack = Jeu()
+if __name__ == "__main__":
+    main()
